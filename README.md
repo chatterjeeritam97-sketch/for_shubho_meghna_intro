@@ -1,1 +1,0 @@
-# for_shubho_meghna_intro
