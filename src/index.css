@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap');
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.japanese-brush {
+  font-family: 'Yuji Syuku', 'Kaiti SC', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  width: 100%;
+  height: 4px;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: #be123c;
+  box-shadow: 0 0 12px rgba(190, 24, 93, 0.65);
+}
+
+.rose-background::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  content: '';
+  opacity: 0.24;
+  background-image: radial-gradient(circle at 20% 20%, #fb7185 0 1px, transparent 2px),
+    radial-gradient(circle at 80% 70%, #fda4af 0 1px, transparent 2px);
+  background-size: 34px 34px, 46px 46px;
+}
+
+.petal-rain {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .petal-rain {
+    opacity: 0.72;
+  }
+
+  .petal {
+    max-height: 24px;
+  }
+
+  .rose {
+    width: 130px;
+    height: 130px;
+  }
+
+  .rose-one {
+    left: -88px;
+  }
+
+  .rose-two {
+    right: -92px;
+  }
+}
+
+.petal {
+  position: absolute;
+  top: -12vh;
+  width: clamp(14px, 2vw, 28px);
+  max-height: 32px;
+  object-fit: contain;
+  opacity: 0.78;
+  filter: drop-shadow(0 3px 4px rgba(136, 19, 55, 0.18));
+}
+
+.hero-stage {
+  isolation: isolate;
+}
+
+.blossom-image,
+.blossom-wash {
+  z-index: -1;
+}
+
+.pattern-band {
+  position: relative;
+  z-index: 1;
+  border-block: 1px solid rgba(190, 24, 93, 0.25);
+}
+
+.japanese-pattern {
+  background-color: rgba(255, 228, 230, 0.55);
+  background-image: radial-gradient(circle at 50% 100%, transparent 0 18px, rgba(190, 24, 93, 0.24) 19px 20px, transparent 21px 28px);
+  background-size: 56px 28px;
+}
+
+.japanese-seal {
+  font-family: 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+  box-shadow: inset 0 0 0 3px rgba(190, 24, 93, 0.12);
+}
+
+.rose {
+  position: absolute;
+  z-index: 0;
+  width: 180px;
+  height: 180px;
+  pointer-events: none;
+  opacity: 0.22;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 10deg, #be123c 0 12deg, #fda4af 12deg 28deg, #9f1239 28deg 40deg);
+  box-shadow: inset 0 0 0 12px rgba(255, 228, 230, 0.6), inset 0 0 0 32px rgba(159, 18, 57, 0.2);
+}
+
+.rose::after {
+  position: absolute;
+  inset: 35%;
+  content: '';
+  border-radius: 50%;
+  background: #881337;
+  box-shadow: 0 0 0 14px rgba(255, 228, 230, 0.5), 0 0 0 28px rgba(159, 18, 57, 0.18);
+}
+
+.rose-one {
+  top: 12%;
+  left: -70px;
+}
+
+.rose-two {
+  top: 58%;
+  right: -75px;
+  transform: scale(0.72);
+}
+
+.details,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 1280px) {
+  .hero-stage {
+    min-height: 920px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petal-rain {
+    display: none;
+  }
+}
