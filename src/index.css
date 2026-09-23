@@ -47,9 +47,11 @@ body {
 
 .shrine-events {
   isolation: isolate;
+  background-color: #fff1f2;
   background-position: center;
   background-size: cover;
   background-attachment: scroll;
+  background-blend-mode: screen;
 }
 
 .shrine-events-wash {
@@ -219,6 +221,22 @@ footer {
 
   .story-card:hover {
     transform: translateY(-0.35rem);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  .shrine-events {
+    background-position: center top;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (max-width: 640px) {
+  .shrine-events {
+    background-position: center top;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 }
 
