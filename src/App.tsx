@@ -2,6 +2,13 @@ import { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import cherryBlossom from './assets/cherry_blossom.avif'
+import shubhaJapani from './assets/shubha_japani.png'
+import meghnaJapani from './assets/meghna_japani.png'
+import coupleJapani from './assets/couple_japani.jpeg'
+import shrineBackground from './assets/shrine_background.png'
+import gardenVow from './assets/garden_vow.png'
+import cocktailParty from './assets/cocktail_party.png'
+import coupleDoodle from './assets/couple_doodle.png'
 import petal1 from './assets/petal1.png'
 import petal2 from './assets/petal2.png'
 import petal3 from './assets/petal3.png'
@@ -64,7 +71,7 @@ function App() {
           trigger: '.hero-stage',
           start: 'top top',
           end: 'bottom top',
-          scrub: true,
+          scrub: 1,
         },
       })
 
@@ -77,7 +84,7 @@ function App() {
           trigger: '.hero-stage',
           start: 'top top',
           end: 'bottom top',
-          scrub: true,
+          scrub: 1,
         },
       })
 
@@ -88,7 +95,7 @@ function App() {
           trigger: page.current,
           start: 'top top',
           end: 'bottom bottom',
-          scrub: true,
+          scrub: 1,
         },
       })
 
@@ -100,19 +107,24 @@ function App() {
         ease: 'power3.out',
       })
 
-      gsap.from('.reveal', {
-        y: 80,
-        opacity: 0,
-        scale: 0.86,
-        rotationX: -12,
-        transformPerspective: 700,
-        duration: 1,
-        stagger: 0.15,
-        ease: 'back.out(1.2)',
-        scrollTrigger: {
-          trigger: '.details',
-          start: 'top 85%',
-        },
+      gsap.utils.toArray<HTMLElement>('.reveal').forEach((card, index) => {
+        gsap.fromTo(card, {
+          y: 56,
+          opacity: 0,
+          scale: 0.96,
+        }, {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.9,
+          delay: index * 0.12,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 88%',
+            toggleActions: 'play none none reverse',
+          },
+        })
       })
 
       gsap.fromTo('.detail-mark', { scaleX: 0 }, {
@@ -123,7 +135,7 @@ function App() {
           trigger: '.details',
           start: 'top 90%',
           end: 'bottom 60%',
-          scrub: 0.8,
+          scrub: 1,
         },
       })
 
@@ -134,33 +146,19 @@ function App() {
           trigger: '.details',
           start: 'top 80%',
           end: 'bottom 55%',
-          scrub: true,
+          scrub: 1,
         },
       })
 
-      gsap.fromTo('.pattern-band', { xPercent: -35 }, {
-        xPercent: 35,
+      gsap.fromTo('.pattern-band', { backgroundPositionX: '-24px' }, {
+        backgroundPositionX: '24px',
         ease: 'none',
         scrollTrigger: {
           trigger: '.pattern-band',
           start: 'top bottom',
           end: 'bottom top',
-          scrub: true,
+          scrub: 1.2,
         },
-      })
-
-      gsap.utils.toArray<HTMLElement>('.reveal').forEach((card, index) => {
-        gsap.to(card, {
-          y: index === 1 ? -42 : 26,
-          rotation: index === 1 ? 1.5 : index === 0 ? -1.5 : 1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true,
-          },
-        })
       })
 
       gsap.to('.rose-one', {
@@ -171,7 +169,7 @@ function App() {
           trigger: '.details',
           start: 'top bottom',
           end: 'bottom top',
-          scrub: true,
+          scrub: 1.2,
         },
       })
 
@@ -183,28 +181,27 @@ function App() {
           trigger: '.details',
           start: 'top bottom',
           end: 'bottom top',
-          scrub: true,
+          scrub: 1.2,
         },
       })
 
-      gsap.from('.footer-copy', {
+      gsap.from('.shrine-copy', {
         y: 24,
-        opacity: 0,
         duration: 0.8,
         scrollTrigger: {
-          trigger: '.footer-copy',
+          trigger: '.shrine-copy',
           start: 'top 90%',
         },
       })
 
-      gsap.fromTo('.footer-copy', { scale: 0.82 }, {
+      gsap.fromTo('.shrine-copy', { scale: 0.82 }, {
         scale: 1,
         ease: 'none',
         scrollTrigger: {
-          trigger: '.footer-copy',
+          trigger: '.shrine-copy',
           start: 'top bottom',
           end: 'top 65%',
-          scrub: true,
+          scrub: 1,
         },
       })
 
@@ -216,6 +213,86 @@ function App() {
           start: 'top bottom',
           end: 'bottom top',
           scrub: 1,
+        },
+      })
+
+      gsap.from('.story-heading', {
+        y: 34,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.story-heading',
+          start: 'top 88%',
+          toggleActions: 'play none none reverse',
+        },
+      })
+
+      gsap.utils.toArray<HTMLElement>('.story-panel').forEach((panel, index) => {
+        gsap.fromTo(panel, {
+          y: 80,
+          opacity: 0,
+          rotateY: index === 1 ? -8 : 8,
+        }, {
+          y: 0,
+          opacity: 1,
+          rotateY: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: panel,
+            start: 'top 88%',
+            toggleActions: 'play none none reverse',
+          },
+        })
+      })
+
+      gsap.utils.toArray<HTMLElement>('.story-image').forEach((image, index) => {
+        gsap.to(image, {
+          xPercent: index === 1 ? -3 : 3,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: image,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 2,
+          },
+        })
+      })
+
+      gsap.utils.toArray<HTMLElement>('.event-image').forEach((image, index) => {
+        gsap.fromTo(image, {
+          scale: 1.18,
+          filter: 'grayscale(0.7)',
+        }, {
+          scale: 1,
+          filter: 'grayscale(0)',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: image,
+            start: 'top 88%',
+            end: 'bottom 55%',
+            scrub: 1,
+          },
+        })
+        gsap.to(image, {
+          yPercent: index === 1 ? 8 : -8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: image,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1.5,
+          },
+        })
+      })
+
+      gsap.from('.shrine-copy', {
+        y: 36,
+        duration: 1,
+        scrollTrigger: {
+          trigger: '.shrine-footer',
+          start: 'top 75%',
         },
       })
     }, page)
@@ -263,30 +340,79 @@ function App() {
       <div className="pattern-band japanese-pattern flex items-center justify-center px-4 py-4 text-[0.65rem] tracking-[0.45em] text-rose-800/70 sm:px-6 sm:py-5 sm:text-xs sm:tracking-[0.8em]" aria-hidden="true">
         花 · 縁 · 花
       </div>
-      <section className="details mx-auto grid max-w-5xl gap-4 px-4 pb-20 sm:gap-6 sm:px-6 sm:pb-28 md:grid-cols-3">
+
+      <section className="story-section mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+        <div className="story-heading mb-12 text-center sm:mb-16">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-rose-700">二人の物語 · Our story</p>
+          <h2 className="japanese-brush mt-4 text-4xl text-stone-900 sm:text-5xl">A little about us</h2>
+        </div>
+        <div className="grid gap-8 md:grid-cols-3">
+          <article className="story-panel story-card group bg-white/70 p-5 transition duration-500 hover:-translate-y-3 hover:bg-white sm:p-7">
+            <div className="story-image relative overflow-hidden border border-rose-200 bg-rose-100 transition duration-700 group-hover:border-rose-500">
+              <img className="h-64 w-full object-cover transition duration-700 ease-out group-hover:scale-105 sm:h-72" src={shubhaJapani} alt="Illustration of Shubha" />
+              <div className="pointer-events-none absolute inset-0 bg-rose-900/0 transition duration-700 group-hover:bg-rose-900/10" />
+            </div>
+            <p className="story-label mt-6 min-h-10 text-xs font-semibold uppercase tracking-[0.25em] text-rose-700">The groom · 新郎</p>
+            <h3 className="japanese-brush mt-2 text-3xl leading-tight text-stone-900">Shubha</h3>
+            <p className="mt-4 leading-7 text-stone-600">A sharp, nerdy lad from Barrackpore with a deep archive of life, humor, and, naturally, football.</p>
+          </article>
+          <article className="story-panel story-card group bg-white/70 p-5 transition duration-500 hover:-translate-y-3 hover:bg-white sm:p-7">
+            <div className="story-image relative overflow-hidden border border-rose-200 bg-rose-100 transition duration-700 group-hover:border-rose-500">
+              <img className="h-64 w-full object-cover transition duration-700 ease-out group-hover:scale-105 sm:h-72" src={meghnaJapani} alt="Illustration of Meghna" />
+              <div className="pointer-events-none absolute inset-0 bg-rose-900/0 transition duration-700 group-hover:bg-rose-900/10" />
+            </div>
+            <p className="story-label mt-6 min-h-10 text-xs font-semibold uppercase tracking-[0.25em] text-rose-700">The bride · 新婦</p>
+            <h3 className="japanese-brush mt-2 text-3xl leading-tight text-stone-900">Meghna</h3>
+            <p className="mt-4 leading-7 text-stone-600">A bubbly, pretty lass, Bollywood devotee, and certified fashionista. Shubha: proceed with caution.</p>
+          </article>
+          <article className="story-panel story-card group bg-white/70 p-5 transition duration-500 hover:-translate-y-3 hover:bg-white sm:p-7">
+            <div className="story-image relative overflow-hidden border border-rose-200 bg-rose-100 transition duration-700 group-hover:border-rose-500">
+              <img className="h-64 w-full object-cover transition duration-700 ease-out group-hover:scale-105 sm:h-72" src={coupleJapani} alt="Illustration of the couple" />
+              <div className="pointer-events-none absolute inset-0 bg-rose-900/0 transition duration-700 group-hover:bg-rose-900/10" />
+            </div>
+            <p className="story-label mt-6 min-h-10 text-xs font-semibold uppercase tracking-[0.25em] text-rose-700">How they met · 出会い</p>
+            <h3 className="japanese-brush mt-2 text-3xl leading-tight text-stone-900">Opposites attract</h3>
+            <p className="mt-4 leading-7 text-stone-600">Post-pandemic, under clear skies and drifting clouds, two hearts became opposite poles and pulled each other close.</p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        className="details shrine-events relative mx-auto grid max-w-6xl gap-4 overflow-hidden px-4 py-20 sm:gap-6 sm:px-6 sm:py-28 md:grid-cols-3"
+        style={{ backgroundImage: `url(${shrineBackground})` }}
+      >
+        <div className="shrine-events-wash absolute inset-0" aria-hidden="true" />
         <div className="timeline-line pointer-events-none absolute left-1/2 hidden h-px w-[calc(100%-3rem)] max-w-4xl origin-left -translate-x-1/2 bg-rose-300 sm:block" />
-        <article className="reveal relative border-t border-rose-300 bg-white/60 p-6 sm:p-8">
+        <article className="reveal relative overflow-hidden border-t border-rose-300 bg-white/60 p-6 sm:p-8">
           <div className="detail-mark absolute left-0 top-0 h-1 w-full origin-left bg-rose-700" />
+          <div className="event-image mb-6 h-48 overflow-hidden bg-rose-100 sm:h-56"><img className="h-full w-full object-cover" src={gardenVow} alt="Garden vow illustration" /></div>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-rose-700">The ceremony</p>
-          <h2 className="mt-4 font-serif text-2xl text-stone-900 sm:mt-5 sm:text-3xl">Garden vows</h2>
+          <h2 className="japanese-brush mt-4 text-2xl text-stone-900 sm:mt-5 sm:text-3xl">Garden vows</h2>
           <p className="mt-3 leading-7 text-stone-600 sm:mt-4">A quiet afternoon ceremony beneath the old elm trees at Prospect Park.</p>
         </article>
-        <article className="reveal relative border-t border-rose-300 bg-white/60 p-6 sm:p-8">
+        <article className="reveal relative overflow-hidden border-t border-rose-300 bg-white/60 p-6 sm:p-8">
           <div className="detail-mark absolute left-0 top-0 h-1 w-full origin-left bg-rose-700" />
+          <div className="event-image mb-6 h-48 overflow-hidden bg-rose-100 sm:h-56"><img className="h-full w-full object-cover" src={cocktailParty} alt="Cocktail party illustration" /></div>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-rose-700">The reception</p>
-          <h2 className="mt-4 font-serif text-2xl text-stone-900 sm:mt-5 sm:text-3xl">Dinner &amp; dancing</h2>
+          <h2 className="japanese-brush mt-4 text-2xl text-stone-900 sm:mt-5 sm:text-3xl">Dinner &amp; dancing</h2>
           <p className="mt-3 leading-7 text-stone-600 sm:mt-4">Join us for seasonal plates, champagne, and a dance floor that stays warm.</p>
         </article>
-        <article className="reveal relative border-t border-rose-300 bg-white/60 p-6 sm:p-8">
+        <article className="reveal relative overflow-hidden border-t border-rose-300 bg-white/60 p-6 sm:p-8">
           <div className="detail-mark absolute left-0 top-0 h-1 w-full origin-left bg-rose-700" />
+          <div className="event-image doodle-image mb-6 h-48 overflow-hidden bg-rose-100 sm:h-56"><img className="h-full w-full object-contain" src={coupleDoodle} alt="Couple doodle illustration" /></div>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-rose-700">The details</p>
-          <h2 className="mt-4 font-serif text-2xl text-stone-900 sm:mt-5 sm:text-3xl">Come as you are</h2>
+          <h2 className="japanese-brush mt-4 text-2xl text-stone-900 sm:mt-5 sm:text-3xl">Come as you are</h2>
           <p className="mt-3 leading-7 text-stone-600 sm:mt-4">Cocktail attire, comfortable shoes, and your best stories encouraged.</p>
         </article>
       </section>
 
-      <footer className="footer-copy border-t border-rose-200 px-4 py-8 text-center text-sm text-stone-500 sm:px-6 sm:py-10">
-        We can&apos;t wait to see you there.
+      <footer className="shrine-footer relative overflow-hidden border-t border-rose-200 bg-rose-950 px-4 py-20 text-center text-sm text-white sm:px-6 sm:py-28">
+        <div className="shrine-copy relative z-10 mx-auto max-w-xl">
+          <p className="japanese-brush text-5xl text-rose-100 sm:text-6xl" lang="ja">ようこそ</p>
+          <p className="mt-4 font-serif text-xs uppercase tracking-[0.35em] text-rose-200">末永く · For all our days</p>
+          <p className="mt-5 font-serif text-2xl text-white sm:text-3xl">Welcome, with love.</p>
+          <p className="mt-3 font-serif text-base text-rose-100/90 sm:text-lg">We can&apos;t wait to celebrate with you.</p>
+        </div>
       </footer>
     </main>
   )

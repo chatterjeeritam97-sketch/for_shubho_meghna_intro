@@ -6,5 +6,5 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(),
     tailwindcss(),],
-  base: '/wed-invite-app/',
+  base: '/for_shubho_meghna_intro/',
 })

@@ -1,16 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Yuji+Syuku&display=swap');
 @import "tailwindcss";
 
 body {
   margin: 0;
   min-width: 320px;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: 'Noto Serif JP', Georgia, 'Times New Roman', serif;
 }
 
 .japanese-brush {
   font-family: 'Yuji Syuku', 'Kaiti SC', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
   font-weight: 400;
   letter-spacing: 0.04em;
+}
+
+.story-section {
+  position: relative;
+  z-index: 1;
+}
+
+.story-card {
+  position: relative;
+  border: 1px solid rgba(190, 24, 93, 0.16);
+  box-shadow: 0 18px 45px rgba(136, 19, 55, 0.08);
+  transform-style: preserve-3d;
+}
+
+.story-card::after {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 2.5rem;
+  height: 1px;
+  content: '';
+  background: rgba(190, 24, 93, 0.45);
+  transition: width 500ms ease, background-color 500ms ease;
+}
+
+.story-card:hover::after {
+  width: 5rem;
+  background: #be123c;
+}
+
+.shrine-footer {
+  isolation: isolate;
+}
+
+.shrine-events {
+  isolation: isolate;
+  background-position: center;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+.shrine-events-wash {
+  z-index: -1;
+  background: rgba(255, 241, 242, 0.82);
+  backdrop-filter: saturate(0.8);
+}
+
+.shrine-events > article,
+.shrine-events > .timeline-line {
+  z-index: 1;
 }
 
 .scroll-progress {
@@ -92,6 +142,9 @@ body {
 .pattern-band {
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
   border-block: 1px solid rgba(190, 24, 93, 0.25);
 }
 
@@ -99,6 +152,7 @@ body {
   background-color: rgba(255, 228, 230, 0.55);
   background-image: radial-gradient(circle at 50% 100%, transparent 0 18px, rgba(190, 24, 93, 0.24) 19px 20px, transparent 21px 28px);
   background-size: 56px 28px;
+  background-position-x: 0;
 }
 
 .japanese-seal {
@@ -142,6 +196,30 @@ body {
 footer {
   position: relative;
   z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .pattern-band {
+    min-height: 48px;
+    white-space: nowrap;
+  }
+
+  .japanese-pattern {
+    background-size: 44px 24px;
+  }
+
+  .story-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .story-card {
+    transform: none;
+  }
+
+  .story-card:hover {
+    transform: translateY(-0.35rem);
+  }
 }
 
 @media (min-width: 1280px) {
