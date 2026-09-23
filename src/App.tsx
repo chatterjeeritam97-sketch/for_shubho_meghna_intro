@@ -6,6 +6,7 @@ import shubhaJapani from './assets/shubha_japani.png'
 import meghnaJapani from './assets/meghna_japani.png'
 import coupleJapani from './assets/couple_japani.jpeg'
 import shrineBackground from './assets/shrine_background.png'
+import shrineBackgroundTransparent from './assets/shrine_background_transparent.png'
 import gardenVow from './assets/garden_vow.png'
 import cocktailParty from './assets/cocktail_party.png'
 import coupleDoodle from './assets/couple_doodle.png'
@@ -381,6 +382,7 @@ function App() {
         className="details shrine-events relative mx-auto grid max-w-6xl gap-4 overflow-hidden px-4 py-20 sm:gap-6 sm:px-6 sm:py-28 md:grid-cols-3"
         style={{ backgroundImage: `url(${shrineBackground})` }}
       >
+        <img className="shrine-events-art" src={shrineBackgroundTransparent} alt="" aria-hidden="true" />
         <div className="shrine-events-wash absolute inset-0" aria-hidden="true" />
         <div className="timeline-line pointer-events-none absolute left-1/2 hidden h-px w-[calc(100%-3rem)] max-w-4xl origin-left -translate-x-1/2 bg-rose-300 sm:block" />
         <article className="reveal relative overflow-hidden border-t border-rose-300 bg-white/60 p-6 sm:p-8">
